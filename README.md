@@ -16,12 +16,16 @@ git submodule update
 3. Install example dependencies OpenAI GYM
 
 ```bash
-python3 -m pip install -r requirements.txt
+conda create -n alphartc python=3.6
+conda activate alphartc
+conda install pytorch torchvision torchaudio cpuonly -c pytorch
+pip install gym matplotlib
 ```
 
 4. Run this example
 
 ```bash
+conda activate alphartc
 python3 main.py
 ```
 
@@ -32,6 +36,5 @@ Episode 1        Average policy loss, value loss, reward -0.003164666119424294, 
 Episode 2        Average policy loss, value loss, reward -0.0006242794975365944, 1503.4368403712722, -0.5418709073877055
 Episode 3        Average policy loss, value loss, reward -0.0013577909024748813, 1396.8935836247986, -0.5149282318393551
 Episode 4        Average policy loss, value loss, reward -0.0002334891452391077, 1349.4928827780047, -0.5091586053527624
-
 ```
 which means this example has readied in your environment. And you can find your model under the folder `data`.
