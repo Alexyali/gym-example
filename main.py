@@ -15,10 +15,10 @@ from deep_rl.ppo_agent import PPO
 def main():
     ############## Hyperparameters for the experiments ##############
     env_name = "AlphaRTC"
-    max_num_episodes = 5      # maximal episodes
+    max_num_episodes = 500      # maximal episodes
 
     update_interval = 4000      # update policy every update_interval timesteps
-    save_interval = 2          # save model every save_interval episode
+    save_interval = 100          # save model every save_interval episode
     exploration_param = 0.05    # the std var of action distribution
     K_epochs = 37               # update policy for K_epochs
     ppo_clip = 0.2              # clip parameter of PPO
@@ -45,7 +45,7 @@ def main():
     # training loop
     for episode in range(max_num_episodes):
         while time_step < update_interval:
-            done = False            
+            done = False
             state = torch.Tensor(env.reset())
             while not done and time_step < update_interval:
                 action = ppo.select_action(state, storage)
